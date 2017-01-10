@@ -1,0 +1,53 @@
+@import "~css-variables/breakpoints/generic.pcss";
+
+#smart-terminal {
+  font-family: 'Droid Sans Mono', monospace;
+  background-color: black;
+  border-radius: 2px;
+  border: 2px solid #e7e7ff;
+  position: fixed;
+  z-index: 1;
+  width: 200px;
+  height: 100px;
+  right: 20px;
+  bottom: 8px;
+  color: white;
+  padding: 1em;
+  font-size: 10px;
+//opacity: 0.5;
+  transition: all 300ms ease;
+
+  &[data-minimised="true"] {
+    &:before {
+      display: block ;
+    }
+    height: 10px;
+    background: none;
+    border: 0 solid #476c80;
+
+  // border: none;
+    .content {
+      display: none;
+    }
+  }
+  &:before {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #20eb00;
+    font-size: 8px;
+    content: "📶  listing for new messages..";
+  }
+}
+
+@media (max-width: var(--small)) {
+  #smart-terminal {
+    &[data-minimised="true"] {
+      width: 50px;
+    }
+    &:before {
+      content: "📶  listening..";
+    }
+  }
+}

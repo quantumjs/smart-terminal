@@ -1,0 +1,47 @@
+{
+  "name": "smart-terminal",
+  "version": "0.1.0",
+  "description": "",
+  "main": "build/smart-terminal.js",
+  "types": "build/src/SmartTerminal.d.ts",
+  "files": [
+    "demo/browserImport/index.html",
+    "build/smart-terminal.js",
+    "build/smart-terminal.css",
+    "build/src/"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "build-prod": "webpack -p",
+    "deploy": "npm run build && sh deploy.sh ",
+    "watch": "webpack --watch --watch-poll ",
+    "prepublish": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantumjs/smart-terminal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quantumjs/smart-terminal/issues"
+  },
+  "homepage": "https://github.com/quantumjs/smart-terminal#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.5.4",
+    "css-variables": "^0.1.0",
+    "html-webpack-plugin": "^2.24.1",
+    "postcss-calc": "^5.3.1",
+    "postcss-cli": "^2.6.0",
+    "postcss-css-variables": "^0.6.0",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-smart-import": "^0.6.0",
+    "ts-loader": "^1.0.0",
+    "typescript": "^2.1.4",
+    "vanilla-typescript": "^0.1.0",
+    "webpack": "2.2.0-rc.3",
+    "webpack-build-notifier": "^0.1.13"
+  }
+}

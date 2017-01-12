@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    require('postcss-custom-media')({/* ...options */}),
     require('postcss-import')({/* ...options */}),
     require('postcss-css-variables')({/* ...options */}),
     require('postcss-nested')({/* ...options */}),

@@ -1,0 +1,10 @@
+body {
+  background: url("sunrise.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #cafaea;
+  background-color: #000000 !important;
+  background-attachment: fixed;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

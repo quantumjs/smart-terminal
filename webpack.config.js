@@ -11,7 +11,7 @@ const PATHS = {
 module.exports = {
 
   entry: {
-    "SmartTerminal": PATHS.src + '/SmartTerminal.ts'
+    "smart-terminal": PATHS.src + '/SmartTerminal.ts'
   },
   output: {
     path: PATHS.build,
@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+        loader: 'ts-loader'
       },
       {
         test: /\.pcss$/,

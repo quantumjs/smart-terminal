@@ -1,17 +1,19 @@
 @import "css-variables/breakpoints/generic.pcss";
+@import "./theme.pcss";
 
-#smart-terminal {
+
+.smart-terminal {
   font-family: 'Droid Sans Mono', monospace;
-  background-color: black;
+  background-color: var(--background);
   border-radius: 2px;
-  border: 2px solid #e7e7ff;
+  border: 2px solid var(--border);
   position: fixed;
   z-index: 1;
   width: 200px;
   height: 100px;
   right: 20px;
   bottom: 8px;
-  color: white;
+  color: var(--color);
   padding: 1em;
   font-size: 10px;
 //opacity: 0.5;

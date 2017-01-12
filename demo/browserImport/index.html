@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <script src="../../build/SmartTerminal.js"></script>
+  <script src="../../build/smart-terminal.js"></script>
+  <link rel="stylesheet" href="../common.css">
 </head>
 <body>
-<button onclick="showSimplePopup()">Click me to trigger the popup programmatically</button>
-<button onclick="showBigPopup()">Click me for a larger example with a form</button><br><br>
-
-<div style="background-color: #57ff22; height: 200px;">Some other content</div>
-<div style="background-color: red; height: 200px;">Some other content</div>
-<div style="background-color: #e1ffe9; height: 200px;">Some other content</div>
 
 </body>
 <script type="text/javascript">
 
-    var component = new SmartTerminal.default()
-    component.show()
+  var component = new SmartTerminal.default()
+  component.show()
+  setTimeout(function () {
+    component.appendMessage('dd')
 
+  }, 1500)
 
 
 </script>

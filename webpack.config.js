@@ -39,7 +39,7 @@ module.exports = {
   },
   resolve: {
     // you can now require('file') instead of require('file.js')
-    extensions: ['.ts', '.js', '.pcss']
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new WebpackBuildNotifierPlugin({

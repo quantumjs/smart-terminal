@@ -1,5 +1,5 @@
 import {IComponent} from 'vanilla-typescript'
-import './index'
+import './index.pcss'
 
 const times = {SHORT_TIME: 6000}
 

@@ -1,4 +1,5 @@
 import {IComponent} from 'vanilla-typescript'
+import './index'
 
 const times = {SHORT_TIME: 6000}
 
@@ -52,5 +53,3 @@ export default class SmartTerminal implements IComponent {
     //todo
   }
 }
-
-

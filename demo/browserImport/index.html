@@ -5,6 +5,8 @@
   <title>Title</title>
   <script src="../../build/smart-terminal.js"></script>
   <link rel="stylesheet" href="../common.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 
@@ -13,9 +15,10 @@
 
   var component = new SmartTerminal.default()
   component.show()
-  setTimeout(function () {
-    component.appendMessage('dd')
+  //component.startPending()
 
+  setTimeout(function () {
+    component.appendMessage('Some content ')
   }, 1500)
 
 

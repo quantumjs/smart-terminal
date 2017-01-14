@@ -36,18 +36,40 @@ export default class SmartTerminal implements IComponent {
   }
 
   appendMessages(messages) {
+    this.stopPending()
     messages.forEach(message => {
       this.contentElement.innerHTML += `<p>${message}</p>`
     })
   }
 
-
-
   appendMessage(message) {
+    this.stopPending()
     const contentEl = this.hostElement.querySelector('.content')
     this.contentElement.innerHTML += ` <p>${message}</p>`
     this.revealFor(times.SHORT_TIME)
   }
+
+  clear(): this {
+    this.contentElement.innerHTML = ''
+    return this
+  }
+
+  /**
+   * Makes the satellite icon spin, tells the user something is happening.
+   */
+  startPending(): this {
+    this.hostElement.dataset["pending"] = 'true'
+    return this
+  }
+
+  /**
+   * Makes the satellite icon stop spinning
+   */
+  stopPending(): this {
+    this.hostElement.dataset["pending"] = 'false'
+    return this
+  }
+
 
   destroy(): void {
     //todo

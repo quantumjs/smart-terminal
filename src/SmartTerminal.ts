@@ -16,6 +16,8 @@ export default class SmartTerminal implements IComponent {
 
     this.hostElement = document.createElement('article')
     this.hostElement.dataset["minimised"] = "true"
+    this.hostElement.title = "Hello, I will inform you of anything you need to know during your visit on this site."
+
     this.hostElement.innerHTML =
       `<div class="content">
      </div>`

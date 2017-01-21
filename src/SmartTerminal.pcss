@@ -1,8 +1,6 @@
 @import "css-variables/breakpoints/generic.pcss";
 @import "./theme.pcss";
 
-
-
 .smart-terminal {
   font-family: 'Droid Sans Mono', monospace;
   background-color: var(--background);
@@ -38,10 +36,11 @@
     right: 0;
 
     color: #20eb00;
-    font-size: 10px;
+    font-size: 12px;
     content: "\1F4E1";
   }
-  &[data-pending="true"]{
+  &[data-pending="true"] {
+
     &:before {
       font-size: 30px;
       animation-name: spin;
@@ -50,10 +49,43 @@
       animation-timing-function: linear;
       transition: all 300ms ease;
     }
+    &:after {
+      content: "";
+      display: block;
+      border: 2px solid #fff;
+      -webkit-border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      -webkit-animation: pulsate 1s ease-out;
+      -webkit-animation-iteration-count: 1;
+      -webkit-animation-delay: 0.2s;
+      opacity: 0.0;
+    }
   }
 }
 
 @keyframes spin {
-  from {transform:rotateY(0deg);}
-  to {transform:rotateY(360deg);}
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    -webkit-transform: scale(6, 6);
+    opacity: 0.0;
+  }
 }

@@ -7,20 +7,42 @@
   <link rel="stylesheet" href="../common.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <style type="text/css">
+    body {
+      background-color: black
+    }
+  </style>
 </head>
 <body>
+<button onclick="startPending()">start pending</button>
+<button onclick="stopPending()">stop pending</button>
+<button onclick="appendMessage()">append message</button>
+<button onclick="clear()">clear</button>
 
 </body>
 <script type="text/javascript">
 
   var component = new SmartTerminal.default()
   component.show()
-  component.startPending()
+  /*
+   setTimeout(function () {
+   component.appendMessage('Some content')
+   }, 1500)
+   */
 
-  setTimeout(function () {
-    component.appendMessage('Some content')
-  }, 1500)
 
+  function clear() {
+    component.clear()
+  }
+  function appendMessage() {
+    component.appendMessage()
+  }
+  function startPending() {
+    component.startPending()
+  }
+  function stopPending() {
+    component.stopPending()
+  }
 
 </script>
 </html>

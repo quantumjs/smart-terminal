@@ -43,7 +43,7 @@
     "style-loader": "^0.13.1",
     "typescript": "^2.1.4",
     "vanilla-typescript": "^0.1.0",
-    "webpack": "2.2.0-rc.4",
+    "webpack": "2.2.0",
     "webpack-build-notifier": "^0.1.13"
   },
   "dependencies": {}

@@ -1,7 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var WebpackBuildNotifierPlugin = require("webpack-build-notifier");
-
+var fontMagician = require('postcss-font-magician')
 
 const PATHS = {
   src: path.join(__dirname, './src'),
@@ -28,7 +28,7 @@ module.exports = {
         loader: 'ts-loader'
       },
       {
-        test: /\.pcss$/,
+        test: /\.p?css$/,
         loaders: [
           'style-loader',
           'css-loader?importLoaders=1,url=false',
@@ -44,6 +44,22 @@ module.exports = {
   plugins: [
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build"
+    })/*,
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          fontMagician({
+            variants: {
+              'Droid Sans Mono': {
+                '300': [],
+                '400': [],
+                '700': []
+              }
+            },
+            foundries: ['google']
+          })
+        ]
+      }
     })
-  ]
+*/  ]
 };

@@ -37,6 +37,8 @@ You can also chain stuff:
 ## Demo
 
   [Basic usage](https://quantumjs.github.io/smart-terminal/demo/browserImport/)
+  
+  [ES2015 import usage](https://quantumjs.github.io/smart-terminal/demo/typescriptImport/build)
 
 ## Roadmap
 

@@ -17,7 +17,7 @@
 <button onclick="startPending()">start pending</button>
 <button onclick="stopPending()">stop pending</button>
 <button onclick="appendMessage()">append message</button>
-<button onclick="clear()">clear</button>
+<button onclick="clearIt()">clear</button>
 
 </body>
 <script type="text/javascript">
@@ -31,11 +31,11 @@
    */
 
 
-  function clear() {
+  function clearIt() {
     component.clear()
   }
   function appendMessage() {
-    component.appendMessage()
+    component.setTimeTillCloseAfterAppending(199000).appendMessage("Some message<br> on several lines, monospaced")
   }
   function startPending() {
     component.startPending()

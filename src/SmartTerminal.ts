@@ -11,6 +11,8 @@ export default class SmartTerminal implements IComponent {
 
   private hostElement: HTMLElement
   private contentElement: HTMLElement
+  private timeTillCloseAfterAppending: number = times.SHORT_TIME
+  private pulseTypeNext: boolean = false
 
   constructor(contentFunction: () => void, onDestroyFunction: () => void) {
 
@@ -30,25 +32,54 @@ export default class SmartTerminal implements IComponent {
     document.body.appendChild(this.hostElement)
   }
 
-  revealFor(time) {
+  revealForDuration() {
     this.hostElement.dataset["minimised"] = "false"
     setTimeout(function () {
       this.hostElement.dataset["minimised"] = "true"
-    }.bind(this), time)
+    }.bind(this), this.timeTillCloseAfterAppending)
   }
 
   appendMessages(messages) {
     this.stopPending()
-    messages.forEach(message => {
-      this.contentElement.innerHTML += `<p>${message}</p>`
-    })
+    if (this.pulseTypeNext) {
+
+    } else {
+      messages.forEach(message => {
+        this.contentElement.innerHTML += `<p>${message}</p>`
+      })
+    }
+    this.resetFancyStuff()
   }
 
   appendMessage(message) {
     this.stopPending()
     const contentEl = this.hostElement.querySelector('.content')
-    this.contentElement.innerHTML += ` <p>${message}</p>`
-    this.revealFor(times.SHORT_TIME)
+
+    if (this.pulseTypeNext) {
+
+    } else {
+      this.contentElement.innerHTML += `<p>${message}</p>`
+    }
+
+    this.revealForDuration()
+    this.resetFancyStuff()
+  }
+
+  setTimeTillCloseAfterAppending(time: number): this {
+    this.timeTillCloseAfterAppending = time
+    return this
+  }
+
+  /**
+   * gets called after any append message to default settings
+   */
+  resetFancyStuff() {
+    this.pulseTypeNext = false
+  }
+
+  setPulseTypeNext(): this {
+    this.pulseTypeNext = true
+    return this
   }
 
   clear(): this {
@@ -74,6 +105,6 @@ export default class SmartTerminal implements IComponent {
 
 
   destroy(): void {
-    //todo
+    this.hostElement.parentElement.removeChild(this.hostElement)
   }
 }

@@ -39,6 +39,22 @@ You can also chain stuff:
   [Basic usage](https://quantumjs.github.io/smart-terminal/demo/browserImport/)
   
   [ES2015 import usage](https://quantumjs.github.io/smart-terminal/demo/typescriptImport/build)
+  
+## Events api
+
+If you want to use it in a component with no reference you can "hand code it with" DOMEvents:
+
+```js
+document.body.addEventListener(SmartTerminal.EVENTS.APPEND_MESSAGE, function (event: CustomEvent) {
+  component.appendMessage(event.detail)
+
+})
+let event = new CustomEvent(SmartTerminal.EVENTS.APPEND_MESSAGE,
+  {detail: "this message came from a DOM event of type SmartTerminal.EVENTS.APPEND_MESSAGE"})
+
+document.body.dispatchEvent(event)
+```
+Note: by convention, you should use the strings SmartTerminal.EVENTS. 
 
 ## Roadmap
 

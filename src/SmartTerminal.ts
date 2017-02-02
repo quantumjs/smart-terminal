@@ -14,10 +14,15 @@ export default class SmartTerminal implements IComponent {
   private timeTillCloseAfterAppending: number = times.SHORT_TIME
   private pulseTypeNext: boolean = false
 
+  static EVENTS = { //use this to communicate with the component via DOM events when you don't have a reference to it. See the readme
+    APPEND_MESSAGE: "APPEND_MESSAGE",
+    APPEND_MESSAGES: "APPEND_MESSAGES",
+    START_PENDING: "START_PENDING"
+  }
+
   constructor(contentFunction: () => void, onDestroyFunction: () => void) {
 
     this.hostElement = document.createElement('article')
-    this.hostElement.dataset["minimised"] = "true"
     this.hostElement.title = "Hello, I will inform you of anything you need to know during your visit on this site."
 
     this.hostElement.innerHTML =
@@ -26,6 +31,7 @@ export default class SmartTerminal implements IComponent {
 
     this.contentElement = <HTMLElement> this.hostElement.querySelector('.content')
     this.hostElement.className = 'smart-terminal'
+    this.minimise()
   }
 
   show(): void {
@@ -35,34 +41,25 @@ export default class SmartTerminal implements IComponent {
   revealForDuration() {
     this.hostElement.dataset["minimised"] = "false"
     setTimeout(function () {
-      this.hostElement.dataset["minimised"] = "true"
+      this.minimise()
     }.bind(this), this.timeTillCloseAfterAppending)
   }
 
   appendMessages(messages) {
+    this.clear()
     this.stopPending()
-    if (this.pulseTypeNext) {
-
-    } else {
-      messages.forEach(message => {
-        this.contentElement.innerHTML += `<p>${message}</p>`
-      })
-    }
-    this.resetFancyStuff()
+    messages.forEach(message => {
+      this.contentElement.innerHTML += `<p>${message}</p>`
+    })
   }
 
   appendMessage(message) {
+    this.clear()
     this.stopPending()
     const contentEl = this.hostElement.querySelector('.content')
-
-    if (this.pulseTypeNext) {
-
-    } else {
-      this.contentElement.innerHTML += `<p>${message}</p>`
-    }
+    this.contentElement.innerHTML += `<p>${message}</p>`
 
     this.revealForDuration()
-    this.resetFancyStuff()
   }
 
   setTimeTillCloseAfterAppending(time: number): this {
@@ -70,20 +67,14 @@ export default class SmartTerminal implements IComponent {
     return this
   }
 
-  /**
-   * gets called after any append message to default settings
-   */
-  resetFancyStuff() {
-    this.pulseTypeNext = false
-  }
-
-  setPulseTypeNext(): this {
-    this.pulseTypeNext = true
+  minimise() {
+    this.hostElement.dataset["minimised"] = "true"
     return this
   }
 
   clear(): this {
     this.contentElement.innerHTML = ''
+    this.minimise()
     return this
   }
 

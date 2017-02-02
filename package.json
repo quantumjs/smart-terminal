@@ -1,6 +1,6 @@
 {
   "name": "smart-terminal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "build/smart-terminal.js",
   "types": "build/src/SmartTerminal.d.ts",

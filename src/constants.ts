@@ -31,7 +31,7 @@ export const constants = {
     SM: 680,
     MD: 1024,
     LG: 1200,
-  },
+  }
 }
 
 

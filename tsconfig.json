@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "declaration": true
+    "target": "es2015",
+    "declaration": true,
+    "moduleResolution": "node",
+    "declarationDir": "./build"
+
   },
   "exclude": [
     "node_modules",
-    "demo"
+    "demo",
+    "build"
   ]
 }
-
 

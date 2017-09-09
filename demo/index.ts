@@ -1,4 +1,4 @@
-import SmartTerminal from 'smart-terminal'
+import SmartTerminal from '../src/SmartTerminal'
 
 
 var component = new SmartTerminal(null, null)

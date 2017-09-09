@@ -20,12 +20,31 @@ module.exports = {
   },
   devtool: "source-map",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader'
+        loader: 'awesome-typescript-loader',
+      },
+      {
+        test: /\.p?css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1, url: false
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
       }
     ]
+
+
   },
   resolve: {
     // you can now require('file') instead of require('file.js')

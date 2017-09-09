@@ -45,10 +45,14 @@ You can also chain stuff:
 If you want to use it in a component with no reference you can "hand code it with" DOMEvents:
 
 ```js
+var smartTerminal = new SmartTerminal(null, null)
+
 document.body.addEventListener(SmartTerminal.EVENTS.APPEND_MESSAGE, function (event: CustomEvent) {
-  component.appendMessage(event.detail)
+  smartTerminal.appendMessage(event.detail)
 
 })
+
+//somewhere in your code
 let event = new CustomEvent(SmartTerminal.EVENTS.APPEND_MESSAGE,
   {detail: "this message came from a DOM event of type SmartTerminal.EVENTS.APPEND_MESSAGE"})
 

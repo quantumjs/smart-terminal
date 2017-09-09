@@ -1,7 +1,7 @@
-import {IComponent} from 'vanilla-typescript'
+import { IComponent } from 'vanilla-typescript'
 import './index.pcss'
 
-const times = {SHORT_TIME: 6000}
+const times = { SHORT_TIME: 6000 }
 
 /**
  * Shows messages tp user
@@ -20,7 +20,7 @@ export default class SmartTerminal implements IComponent {
     START_PENDING: "START_PENDING"
   }
 
-  constructor(contentFunction: () => void, onDestroyFunction: () => void) {
+  constructor (contentFunction: () => void, onDestroyFunction: () => void) {
 
     this.hostElement = document.createElement('article')
     this.hostElement.title = "Hello, I will inform you of anything you need to know during your visit on this site."
@@ -34,18 +34,23 @@ export default class SmartTerminal implements IComponent {
     this.minimise()
   }
 
-  show(): void {
-    document.body.appendChild(this.hostElement)
+  show (): Promise<void> {
+
+
+    return new Promise((resolve, reject) => {
+      document.body.appendChild(this.hostElement)
+      resolve()
+    })
   }
 
-  revealForDuration() {
+  revealForDuration () {
     this.hostElement.dataset["minimised"] = "false"
     setTimeout(function () {
       this.minimise()
     }.bind(this), this.timeTillCloseAfterAppending)
   }
 
-  appendMessages(messages) {
+  appendMessages (messages) {
     this.clear()
     this.stopPending()
     messages.forEach(message => {
@@ -53,7 +58,7 @@ export default class SmartTerminal implements IComponent {
     })
   }
 
-  appendMessage(message) {
+  appendMessage (message) {
     this.clear()
     this.stopPending()
     const contentEl = this.hostElement.querySelector('.content')
@@ -62,17 +67,17 @@ export default class SmartTerminal implements IComponent {
     this.revealForDuration()
   }
 
-  setTimeTillCloseAfterAppending(time: number): this {
+  setTimeTillCloseAfterAppending (time: number): this {
     this.timeTillCloseAfterAppending = time
     return this
   }
 
-  minimise() {
+  minimise () {
     this.hostElement.dataset["minimised"] = "true"
     return this
   }
 
-  clear(): this {
+  clear (): this {
     this.contentElement.innerHTML = ''
     this.minimise()
     return this
@@ -81,7 +86,7 @@ export default class SmartTerminal implements IComponent {
   /**
    * Makes the satellite icon spin, tells the user something is happening.
    */
-  startPending(): this {
+  startPending (): this {
     this.hostElement.dataset["pending"] = 'true'
     return this
   }
@@ -89,13 +94,16 @@ export default class SmartTerminal implements IComponent {
   /**
    * Makes the satellite icon stop spinning
    */
-  stopPending(): this {
+  stopPending (): this {
     this.hostElement.dataset["pending"] = 'false'
     return this
   }
 
 
-  destroy(): void {
-    this.hostElement.parentElement.removeChild(this.hostElement)
+  destroy (): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.hostElement.parentElement.removeChild(this.hostElement)
+      resolve()
+    })
   }
 }

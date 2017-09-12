@@ -3,6 +3,8 @@
 It sits unobtrusively on the bottom right hand of the screen, and lets users know its listening. If something interesting happens
 it performs its magic to let the users know what happened.
 
+  [Demo](https://quantumjs.github.io/smart-terminal/demo/build/)
+
 ## installation
 You can install into your application by running 
 npm install --save-dev smart-terminal
@@ -33,12 +35,6 @@ You can also chain stuff:
 
 * It writes text
 * Has fluent style api
-
-## Demo
-
-  [Basic usage](https://quantumjs.github.io/smart-terminal/demo/browserImport/)
-  
-  [ES2015 import usage](https://quantumjs.github.io/smart-terminal/demo/typescriptImport/build)
   
 ## Events api
 

@@ -9,7 +9,7 @@ fi
 git branch -D gh-pages
 
 git checkout --orphan gh-pages
-git add build/* -f
-git commit -m "build files"
+git add demo/* -f
+git commit -m "demo files"
 git push -f origin gh-pages
 git checkout master

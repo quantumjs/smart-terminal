@@ -1,5 +1,5 @@
 import SmartTerminal from '../src/SmartTerminal'
-
+import './common.css'
 
 var component = new SmartTerminal(null, null)
 component.show()

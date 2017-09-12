@@ -3,6 +3,7 @@
   "main": "index.js",
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.3",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.24.1",
     "style-loader": "^0.18.2",
